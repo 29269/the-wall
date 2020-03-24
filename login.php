@@ -4,8 +4,10 @@ $username='root';
 $password='';
 $database='the_wall';
 
-
-
+if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+    $gebruikersnaam = $_POST["gebruikersnaam"];
+    $wachtwoord = $_POST['wachtwoord'];
+}
 try {
     $connection = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -13,9 +15,6 @@ try {
     $statement = $connection->query($query);
     $errors = [];
 
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-    $gebruikersnaam = $_POST["gebruikersnaam"];
-    $wachtwoord = $_POST['wachtwoord'];
 
     $sql= 'SELECT * FROM `registreer` WHERE `gebruikersnaam` = :gebruikersnaam';
         $statement = $connection->prepare($sql );
@@ -40,5 +39,6 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
             
 
         }
-        }
-        ?>
+        
+        
+    
