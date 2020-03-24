@@ -1,5 +1,17 @@
 <?php
-$errors = [];
+$hostname='localhost';
+$username='root';
+$password='';
+$database='the_wall';
+
+
+
+try {
+    $connection = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "SELECT * FROM registreer";
+    $statement = $connection->query($query);
+    $errors = [];
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
     $gebruikersnaam = $_POST["gebruikersnaam"];
@@ -28,5 +40,5 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
             
 
         }
-
-?>
+        }
+        ?>
