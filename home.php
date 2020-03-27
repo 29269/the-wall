@@ -57,12 +57,17 @@ function signIn(){
     </form>
 </div>
 <div class="first">
-    <?php if (! signIn() ) ; ?>
+    <?php if(!admin());?>
     <h2>SIGN IN</h2>
-
+    <?php else: ?>
+    <a href="logout.php">LOGOUT</a>
+    <?php endif; ?>
 </div>
 <div class="box">
     <h1>SIGN IN</h1>
+    <!-- voor het fout melding heb ik foreach nodig -->
+  
+
     <form action="login.php" method="POST" class="toevoegen">
         <label for="titel">User name:</label><br>
         <input type="gebruikersnaam" name="gebruikersnaam" placeholder="My name"><br>
