@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gebruikersnaam = $_POST["gebruikersnaam"];
     $wachtwoord     = $_POST['wachtwoord'];
 
-    if (empty($email)) {
-        $errors['email'] = 'E-mail adres is niet ingevuld';
-    }
     if (empty($gebruikersnaam)) {
         $errors['gebruikersnaam'] = 'gebruikersnaam is niet ingevuld';
+    }
+    if (empty($wachtwoord)) {
+        $errors['wachtwoord'] = 'E-mail adres is niet ingevuld';
     }
 
     if (count($errors) === 0) {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($statement->rowCount() === 1) {
             $gebruiker = $statement->fetch();
 
-            if (password_verify($gebruikersnaam, $gebruiker['wachtwoord'])) {
+            if (password_verify($wachtwoord, $gebruiker['wachtwoord'])) {
                 $_SESSION['id'] = $gebruiker['id'];
                 $_SESSION['email'] = $gebruiker['email'];
 

@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php echo $errors['gebruiker']; ?>
                     <?php endif; ?>
 
-                    <button type="submit" name="sign_in" class="login-button">Sign in</button>
+                    <button type="submit" name="login" class="login-button">Sign in</button>
                 </form>
             </div>
         </div>
